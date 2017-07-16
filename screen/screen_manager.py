@@ -27,10 +27,14 @@ def run_rom( options ):
     else:
         system = options[ 'system' ]
         path = options[ 'path' ]
-
+    if not 'art' in options:
+        art = ""
+    else:
+        art = options[ 'art' ]
+        
         # Use runcommand to load the rom, then ES after it exits
         logger.info( 'Running rom: {}'.format( path ) )
-        cmd = "{} 0 _SYS_ {} '{}'".format( RUNCOMMAND, system, path )
+        cmd = "{} 0 _SYS_ {} '{}' {}".format( RUNCOMMAND, system, path, art )
         return cmd
 
 def run_dashboard( options ):
